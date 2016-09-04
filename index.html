@@ -1,0 +1,366 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+
+
+
+        <link href="//www.saramin.co.kr/css/ui/reset-fonts.css?v=20160803" media="all" rel="stylesheet" type="text/css" >
+        <link href="//www.saramin.co.kr/css/nudge/common-layout.css?v=20160803" media="all" rel="stylesheet" type="text/css" >
+        <link href="//www.saramin.co.kr/css/nudge/content.css?v=20160803" media="all" rel="stylesheet" type="text/css" >
+        <link href="//www.saramin.co.kr/css/nudge/content/rct_noti_smt.css?v=20160803" media="screen, print" rel="stylesheet" type="text/css" >
+        <link href="//www.saramin.co.kr/css/nudge/content/recruit-template.css?v=20160803" media="screen" rel="stylesheet" type="text/css" >
+        <!-- custom -->
+        <link href="css/recruit-manage.css?v=20150114" media="screen" rel="stylesheet" type="text/css" >
+        <!-- custom -->
+        <link href="//www.saramin.co.kr/css/recruit-goods.css" media="screen, print" rel="stylesheet" type="text/css" >
+        <link href="//www.saraminimage.co.kr/favicon.ico" rel="favicon" >
+        <link href="//www.saraminimage.co.kr/favicon.ico" rel="icon" type="image/x-icon" >
+        <link href="//www.saraminimage.co.kr/favicon.ico" rel="shortcut icon" type="image/x-icon" >
+        <link href="//www.saramin.co.kr/css/nudge/layer_install_app.css?v=20160803" media="all" rel="stylesheet" type="text/css" >
+        <link href="//www.saramin.co.kr/css/common_ui.css?v=20160803" media="all" rel="stylesheet" type="text/css" >
+        <!-- custom -->
+        <link href="css/company_common_layout_test.css" media="all" rel="stylesheet" type="text/css" >
+        <link href="css/jquery-ui_custom.css" rel="stylesheet" type="text/css">
+        <!-- custom -->
+        <link href="//www.saramin.co.kr/css/new_product.css?v=20160803" media="all" rel="stylesheet" type="text/css" >
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
+        <!-- <script src="js/FluxiStore.js"></script>
+        <script src="js/LayerHandler.js"></script> -->
+        <script src="js/test1.js"></script>
+        <script>
+            var fluxiStore = new FluxiStore();
+            var layerHandler = new LayerHandler({
+                'rootLayerSelector' : 'body'
+            });
+
+            layerHandler.bindRootClickEvent();
+        </script>
+
+        <section id="cm_contents">
+            <div class="wrap_contents no_border">
+                <div id="wrap_contents_inner" class="cm_innerb without_rightwing">
+                    <div class="content_typec sub-content">
+                        <div class="step_common step1">
+                            <p class="step_tit">어떤 인재를 뽑을 계획이세요?</p>
+                            <div class="recruit_frm">
+                                <form action="">
+
+                                    <!--component : existing_recruits s-->
+                                    <div class="recruit_load_area">
+                                        <span class="recruit_load_tit">이전 채용정보 불러오기</span>
+                                        <div class="form_sp frm_select">
+                                            <select id="existing_recruit">
+                                                <option value="">[2016-02-01] 테스트로 등록 1</option>
+                                                <option value="">[2016-02-02] 테스트로 등록 2</option>
+                                                <option value="">[2016-02-03] 테스트로 등록 3</option>
+                                                <option value="">[2016-02-04] 테스트로 등록 4</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!--component : existing_recruits e-->
+
+                                    <!--component : job_category s-->
+                                    <div id="job_category" class="career_chk_area charge_job">
+                                        <span class="chk_list_tit">담당업무</span>
+                                        <div class="task_input_area">
+                                            <div>
+                                                <ul class="task_list"></ul>
+                                            </div>
+                                            <!-- 자동검색 영역 s -->
+                                            <div class="charge_job_select _autocomplete _close_layer">
+                                                <ul class="charge_job_list"></ul>
+                                                <div class="select_btn_area">
+                                                    <button type="button" class="btn_typ_b4">선택</button>
+                                                    <button type="button" class="btn_typ_c1 _close_layer">취소</button>
+                                                </div>
+                                            </div>
+                                            <!-- 자동검색 영역 e -->
+                                        </div>
+                                        <button type="button" class="btn_typ_b1 btn_category _toggle_all_category">카테고리 검색</button>
+
+                                        <!-- 카테고리 검색 s -->
+                                        <div class="category_area">
+                                            <ul class="category_list">
+                                                <li class="category_step">
+                                                    <p class="category_step_tit">직종분류</p>
+                                                    <ul>
+                                                        <li>경유·사무</li>
+                                                        <li>유통·무역</li>
+                                                        <li class="on">영업·고객상담</li>
+                                                        <li>생산·제조</li>
+                                                        <li>IT·인터넷</li>
+                                                        <li>디자인</li>
+                                                        <li>경유·사무</li>
+                                                        <li>유통·무역</li>
+                                                        <li>경유·사무</li>
+                                                        <li>유통·무역</li>
+                                                        <li class="on">영업·고객상담</li>
+                                                        <li>생산·제조</li>
+                                                        <li>IT·인터넷</li>
+                                                        <li>디자인</li>
+                                                        <li>경유·사무</li>
+                                                        <li>유통·무역</li>
+                                                    </ul>
+                                                </li>
+                                                <li class="category_step">
+                                                    <p class="category_step_tit">1차직종 (최대3개)</p>
+                                                    <ul>
+                                                        <li>편의점</li>
+                                                        <li>쇼핑몰 아울렛</li>
+                                                        <li>백화점 면세점</li>
+                                                        <li>DVD만화 멀티방</li>
+                                                        <li class="on">노래방</li>
+                                                        <li>오락실 게임장</li>
+                                                        <li>편의점</li>
+                                                        <li>쇼핑몰 아울렛</li>
+                                                        <li>노래방</li>
+                                                        <li>오락실 게임장</li>
+                                                        <li>편의점</li>
+                                                        <li>쇼핑몰 아울렛</li>
+                                                    </ul>
+                                                </li>
+                                                <li class="category_step">
+                                                    <p class="category_step_tit">2차직종 (최대10개)</p>
+                                                    <ul>
+                                                        <li><input type="checkbox" id="chk_step01_11"><label for="chk_step01_11">매장안내</label></li>
+                                                        <li><input type="checkbox" id="chk_step01_12"><label for="chk_step01_12">보안</label></li>
+                                                        <li><input type="checkbox" id="chk_step01_13"><label for="chk_step01_13">주차관리</label></li>
+                                                        <li><input type="checkbox" id="chk_step01_14"><label for="chk_step01_14">캐셔</label></li>
+                                                        <li><input type="checkbox" id="chk_step01_15"><label for="chk_step01_15">진열</label></li>
+                                                        <li><input type="checkbox" id="chk_step01_16"><label for="chk_step01_16">물류</label></li>
+                                                        <li><input type="checkbox" id="chk_step01_17"><label for="chk_step01_17">매장안내</label></li>
+                                                        <li><input type="checkbox" id="chk_step01_18"><label for="chk_step01_18">매장안내</label></li>
+                                                        <li><input type="checkbox" id="chk_step01_19"><label for="chk_step01_19">보안</label></li>
+                                                        <li><input type="checkbox" id="chk_step01_20"><label for="chk_step01_20">주차관리</label></li>
+                                                        <li><input type="checkbox" id="chk_step01_21"><label for="chk_step01_21">캐셔</label></li>
+                                                        <li><input type="checkbox" id="chk_step01_22"><label for="chk_step01_22">진열</label></li>
+                                                        <li><input type="checkbox" id="chk_step01_23"><label for="chk_step01_23">물류</label></li>
+                                                        <li><input type="checkbox" id="chk_step01_24"><label for="chk_step01_24">매장안내</label></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                            <div class="select_btn_area">
+                                                <button type="button" class="btn_typ_b4">선택</button>
+                                                <button type="button" class="btn_typ_c1 _toggle_all_category">취소</button>
+                                            </div>
+                                        </div>
+                                    </div>
+<script>
+    //1. group을 정의
+    var storeGroup = 'job_category',
+            storeGroupWrapper = $('#' + storeGroup);
+
+    //2. data의 구조 정의
+    tmpData = {//storeGroup
+        "job_category" : {//storeKey
+            "123": {//code
+                "name": "영업·고객상담",
+                "keyword": {
+                    "12" : "기업 영업",
+                    "2343" : "기술 영업 화이팅"
+                }
+            },
+            "456": {//code
+                "name": "SI 업체",
+                "keyword": {
+                    "654" : "FE개발자",
+                    "04563" : "풀스택노가다"
+                }
+            }
+        }
+    };
+    fluxiStore.setInitialDataIfEmpty(storeGroup, tmpData);
+
+    //3. UI event binding - store의 데이터를 변경한다
+    //이벤트가 밖으로 확산되는 걸 방지
+    storeGroupWrapper.on('click', function (event) {
+        event.stopPropagation();
+    });
+
+    //실제 text input의 위치를 찾기 어려워 디자인된 text input 영역을 클릭할 때도포커스를 준다
+    storeGroupWrapper.on('click', '.task_input_area > div', function () {
+        $(this).find('input:text').focus();
+    });
+
+    var autocompleteLayerEl = storeGroupWrapper.find('._autocomplete');
+
+    //_task_list_input는 동적으로 생성되기 때문에, 상위 엘리먼트에 이벤트를 위임한다
+    storeGroupWrapper.on('keypress keydown keyup change', '._task_list_input', function () {
+        var searchWord = $(this).val();
+
+        if (searchWord === '') {
+            //초기화할 레이어가 있다면, 실행
+            layerHandler.truncate();
+        } else {
+            //레이어를 노출하고, 레이어가 초기화되기 위한 일을 지정한다
+            autocompleteLayerEl.show();
+            layerHandler.addTruncateFuntion({
+                'id' : '_autocomplete',
+                'execute' : function () {
+                    storeGroupWrapper.find('input:text').val('');
+                    autocompleteLayerEl.hide();
+                }
+            });
+
+            $.ajax({
+                url: 'auto-complete.html',
+                data: {
+                    'keyword' : encodeURIComponent(searchWord),
+                    'tcode' : 24
+                },
+                type:'POST',
+                dataType: 'json'
+            }).done(function(ret) {
+                var fillContentArr = [],
+                        charge_job_list_el = storeGroupWrapper.find('.charge_job_list'),
+                        template = '<li><label class="form_sp frm_chk02" for="chk_step01_{{id}}"><input type="checkbox" id="chk_step01_{{id}}"><span>{{keyword-name-full}}</span></label></li>',
+                        mainContent = '<li>검색 결과가 없습니다.</li>',
+                        contentsRows = {}, codeArr;
+
+                if (ret && ret.contents) {
+                    if (window.JSON && JSON.parse) {
+                        contentsRows = JSON.parse(ret.contents);
+                    } else {
+                        eval('(' + 'contentsRows = ' + ret.contents + ')');
+                    }
+                    for (var codeStr in contentsRows) {
+                        if (!contentsRows.hasOwnProperty(codeStr)) {
+                            continue;
+                        }
+                        codeArr = codeStr.split('|');
+                        fillContentArr.push(
+                            template.replace(/\{\{id}}/g, codeArr[0] + '_' + codeArr[1])
+                                .replace('{{keyword-name-full}}', contentsRows[codeStr])
+                        );
+                    }
+                }
+                if (fillContentArr && fillContentArr.length) {
+                    mainContent = fillContentArr.join('');
+                }
+                charge_job_list_el.find('li').remove();
+                charge_job_list_el.html(mainContent);
+            });
+        }
+    });
+    //button action
+    storeGroupWrapper.on('click', 'a, button', function (event) {
+        var thisEl = $(this);
+
+        if (thisEl.hasClass('_remove_keyword')) {
+            //string 타입으로 변환
+            // - template에서 code를 replace하면 나중에 .data()로 가져올 때 int로 인식한다.
+            var strKeyword = thisEl.data('keyword') + '';
+            fluxiStore.updateJobCategoryExcludeWith([strKeyword]);
+
+        } else if (thisEl.hasClass('_toggle_all_category')) {
+            storeGroupWrapper.find('.category_area').toggle();
+
+        } else if (thisEl.hasClass('_close_layer')) {
+            layerHandler.truncate();
+        }
+
+        //이벤트가 task_input_area로 확산되는 걸 방지
+        event.stopPropagation();
+    });
+
+    //4. 데이터(store)가 바뀌면 UI에 어떻게 적용할 지 등록
+    fluxiStore.storeChangeListener(storeGroup, function () {
+        //task_list 채우기
+        var template, mainContent, appendHtml, fillContentArr;
+        template = '' +
+            '<li>\n' +
+            '    <span class="job_name">{{keyword-name}}</span>\n' +
+            '    <button type="button" class="btn_close_lpop01 _remove_keyword" data-code="{{code}}" data-keyword="{{keyword}}">닫기</button>\n' +
+            '</li>\n';
+        mainContent = '<li>&nbsp;</li>';
+        appendHtml = '\n<li><div><input class="_task_list_input" type="text" style="width:80px;" autocomplete="off"></div></li>\n';
+
+        fillContentArr = fluxiStore.inspectJobCategory(function (callbackData) {
+            return template.replace('{{keyword}}', callbackData.keyword)
+                    .replace('{{keyword-name}}', callbackData.keywordName)
+                    .replace('{{code-name}}', callbackData.codeName)
+                    .replace('{{code}}', callbackData.code);
+        });
+        if (fillContentArr && fillContentArr.length) {
+            mainContent = fillContentArr.join('');
+        }
+        storeGroupWrapper.find('.task_list').html(mainContent + appendHtml);
+
+        //clonestore 생성이 필요한 경우
+        //자동 완성
+        //전체 카테고리
+    });
+    fluxiStore.emitChangeListener(storeGroup);//초기값에 따른 UI 초기화
+
+    //5.validation 조건 추가
+    fluxiStore.addValidator(function(){
+        return fluxiStore.inspectJobCategory();
+    });
+
+</script>
+                                    <!--component : job_category e-->
+
+                                    <!--component : career s-->
+                                    <div class="career_chk_area">
+                                        <span class="chk_list_tit">경력여부</span>
+                                        <ul class="chk_list">
+                                            <li><label class="form_sp frm_chk02" for="chk_career01"><input type="checkbox" id="chk_career01"><span>신입</span></label></li>
+                                            <li>
+                                                <label class="form_sp frm_chk02" for="chk_career02"><input type="checkbox" id="chk_career02"><span>경력</span></label>
+                                                <div class="career_tab on">
+                                                    <input type="text" id="aaa" class="frm_input01 input_length2" value=""><span class="sc_txt">년</span>
+                                                    <div class="form_sp frm_select">
+                                                        <select name="" id="bbb">
+                                                            <option value="">이상</option>
+                                                            <option value="">이하</option>
+                                                        </select>
+                                                    </div>
+                                                    <input type="text" id="ccc" class="frm_input01 input_length2" value=""><span class="sc_txt">년</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <label class="form_sp frm_chk02" for="chk_career03"><input type="checkbox" id="chk_career03"><span>경력무관</span></label>
+                                                <div class="career_tab">
+                                                    <label class="form_sp frm_chk02" for="chk_career03_1"><input type="checkbox" id="chk_career03_1"><span>신입도 가능</span></label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!--component : career e-->
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+    </body>
+</html>
