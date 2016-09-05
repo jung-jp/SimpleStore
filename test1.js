@@ -144,9 +144,39 @@ function createStore() {
         console.log(createStore.modules);
         for ( i in createStore.modules ) {
             console.log(1);
-            if ( Sandbox.modules.hasOwnProperty(i) ) {
+            if ( createStore.modules.hasOwnProperty(i) ) {
                 console.log(2);
-                modules.push(i);
+                createStore.push(i);
+            }
+        }
+    }
+
+    // 필요한 모듈을 초기화 한다.
+    for ( i = 0; i < modules.length; i += 1 ) {
+        createStore.modules[modules[i]].bind(this);
+    }
+}
+
+function createStore() {
+    var args = Array.prototype.slice.call(arguments),
+        modules = ( args[0] && typeof args[0] === 'string' ? args :  args[0] ),
+        i;
+
+    // 함수가 생성자로 호출되도록 보장한다.
+    if ( !(this instanceof createStore) ) {
+        return new createStore(modules);
+    }
+
+    // 코어 this 객체에 모듈을 추가한다.
+    // 모듈이 없거나 * 이면 사용 가능한 모든 모듈을 사용한다는 의미.
+    if ( !modules || modules === '*' || modules[0] === '*' ) {
+        modules = [];
+        // console.log(createStore.modules);
+        for ( i in createStore.modules ) {
+            // console.log(1);
+            if ( createStore.modules.hasOwnProperty(i) ) {
+                console.log(2);
+                createStore.push(i);
             }
         }
     }
@@ -200,5 +230,24 @@ var preferred = function() {
 //
 //
 
+var job = {
+    // 필요에 따라 다음과 같이 Sandbox 프로토타입에 접근할 수 있다.
+    // box.constructor.prototype.m = 'mmm';
+    init : function(){
+        console.log('job init');
+    },
+    render : function(){
+        console.log('job render');
+    }
+}
+var career = {
+    init : function(){
+        console.log('career init');
+    },
+    render :  function(){
+        console.log('career render');
+    }
+}
 
+var o = Object.assign({}, {'job':job}, {'career':career});
 dispatch :
