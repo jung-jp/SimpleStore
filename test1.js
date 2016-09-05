@@ -57,6 +57,7 @@ var Store = {
     listeners : {
         any : []
     },
+
     // dispatch 역할, stroe에 의존성을 등록
     on : function( fn, type, context ) {
         type = type || 'any';
@@ -114,7 +115,7 @@ var Store = {
         return data.setData(category);
     }
 
-    connect : function(o) {
+    createStore : function(o) {
         var i;
         for ( i in Store ) {
             if ( Store.hasOwnProperty(i) &&
@@ -251,3 +252,27 @@ var career = {
 
 var o = Object.assign({}, {'job':job}, {'career':career});
 dispatch :
+
+// -------------------------
+
+1. 먼저 개념부터 정의
+
+action : store.dispatch()를 통해 {action}객체를 전달.
+ - 일어날 일을 기술.. reducer에 통합. 별도 액션 처리하지 않는다.
+
+reducer :
+- 애플리캐이션의 상태가 어떻게 바뀌는지 기술
+
+
+store : 애플리케이션의 상태가 어떻게 바뀌는지 기술.
+	•	애플리케이션의 상태를 저장하고;
+	•	getState()를 통해 상태에 접근하게 하고;
+	•	dispatch(action)를 통해 상태를 수정할 수 있게 하고;
+	•	subscribe(listener)를 통해 리스너를 등록합니다.
+
+combineReducers()를 통해 여러 리듀서를 하나로 합쳤습니다. 우리는 이것을 가져와서 createStore()에 넘길겁니다.
+
+reducer :
+
+
+component :
