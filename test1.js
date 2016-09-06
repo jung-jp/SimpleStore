@@ -112,7 +112,7 @@ var Store = {
 
     getState : function(category) {
         return data.setData(category);
-    }
+    },
 
     connect : function(o) {
         var i;
@@ -195,10 +195,3 @@ var preferred = function() {
 }
 
 // -----------------------------
-
-
-//
-//
-
-
-dispatch :
