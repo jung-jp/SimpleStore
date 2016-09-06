@@ -1,20 +1,16 @@
 define([
-  'require', 'jquery',  'modernizr',  '../dataStore', '../DataSet',
+  'require', 'jquery', 'Store'
 ], function (require) {
+    function Career(store) {
+        this.store = store || require('Store');;
+    }
 
-    var store = require('../dataStore');
-
-    return {
-        init : function () {
-            this.getState();
-        },
-        eventXXX : function() {
-            this.setState();
-        },
-
-        render() {
-
-        }
-
+    Career.prototype.init = function () {
+        console.log('Career init()');
     };
+
+    Career.prototype.render = function () {
+        console.log('Career render()');
+    };
+    return Career
 });
