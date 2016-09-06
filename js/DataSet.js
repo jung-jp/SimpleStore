@@ -1,7 +1,7 @@
 define(['require'], function (require) {
     function DataSet(data) {
         this.data = {
-            "job_category" : {//storeKey
+            "jobCategory" : {//storeKey
                 "123": {//code
                     "name": "영업·고객상담",
                     "keyword": {
@@ -17,12 +17,8 @@ define(['require'], function (require) {
                     }
                 }
             },
-            category_2 : {},
-            category_3 : {},
-            category_4 : {},
-            category_5 : {}
+            "career" : [1,3],
         };
-
         data && this.setData(data);
     }
 
@@ -38,7 +34,7 @@ define(['require'], function (require) {
         if ( !!key ) {
             return this.data[key];
         } else {
-            return data;
+            return this.data;
         }
     };
 

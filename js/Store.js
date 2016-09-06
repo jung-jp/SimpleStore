@@ -9,10 +9,7 @@ define([
         state : new DataSet(),
 
         listeners : {
-            default : [],
-            any1 : [],
-            any2 : [],
-            any3 : []
+            default : []
         },
 
         reducers : [],
@@ -39,8 +36,8 @@ define([
          * 발행
          * type : category, publication : 파라미터.. 필요없을 듯.
          */
-        emit : function( type, publication ) {
-            this.emitListener('publish', type, publication);
+        emit : function( type, param ) {
+            this.emitListener('publish', type, param);
         },
 
         /**
@@ -65,19 +62,19 @@ define([
             }
         },
 
-        initState : function(key) {
-            this.execute(key, 'init');
+        initState : function(category) {
+            this.execute(category, 'init');
         },
 
-        render : function(key) {
-            this.execute(key, 'render');
+        render : function(category) {
+            this.execute(category, 'render');
         },
 
-        execute : function(reducerKey, method) {
+        execute : function(category, method) {
             var reducers = [];
-            if( !!reducerKey ) {
+            if( !!category ) {
                 this.reducers.forEach(function(obj, idx) {
-                    if ( Object.keys(obj).shift() == reducerKey ) {
+                    if ( Object.keys(obj).shift() == category ) {
                         return reducers.push(obj);
                     }
                 });
@@ -90,14 +87,14 @@ define([
             });
         },
 
-        setState : function(data, key) {
-            this.state.setData(data, key);
-            // this.emit(key);
-            this.render(key);
+        setState : function(data, category) {
+            this.state.setData(data, category);
+            // this.emit(category, param);
+            this.render(category);
         },
 
-        getState : function(key) {
-            return this.state.getData(key);
+        getState : function(category) {
+            return this.state.getData(category);
         },
 
         createStore : function(o) {
