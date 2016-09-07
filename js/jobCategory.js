@@ -4,12 +4,12 @@ define([
     var component = require('Component');
     var JobCategory = component.create({
 
-        name : 'jobCategory',
+        name : 'JobCategory',
 
         init : function () {
             console.log('JobCategory init()');
 
-            this.watchComponent(['career']);
+            this.watchingMe(['Career']);
 
             var store = this.store;
             var storeGroupWrapper = $('#jobCategory'),

@@ -3,11 +3,11 @@ define([
 ], function (require) {
     var component = require('Component');
     var Test = component.create({
-        name : 'test',
+        name : 'Test',
 
         init : function() {
             console.log('test init>>>>>>>>>>>');
-            this.watchComponent(['jobCategory', 'major']);
+            this.watchingMe(['JobCategory', 'Major']);
             console.log('<<<<<<<<<<<test init');
         },
 

@@ -4,11 +4,11 @@ define([
 
     return require('Component').create({
 
-        name : 'career',
+        name : 'Career',
 
         init : function () {
             console.log('Career init()');
-            this.watchComponent(['jobCategory', 'test']);
+            this.watchingMe(['JobCategory', 'Test']);
             this.registerEvent();
         },
 

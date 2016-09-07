@@ -4,7 +4,7 @@ define([
 
     return require('Component').create({
 
-        name : 'preferred',
+        name : 'Preferred',
 
         init : function () {
             console.log('preferred init()');

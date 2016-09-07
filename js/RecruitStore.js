@@ -27,8 +27,8 @@ require([
             require('Preferred')
         ];
 
-    var recruitStore = Object.assign({}, store, {
-        name : 'recruitStore'
+    var RecruitStore = Object.assign({}, store, {
+        name : 'RecruitStore'
         /**
          * 추가함수 구현
          *  ...
@@ -37,6 +37,6 @@ require([
       .init(require('sampleMock'));
 
     // console.log(recruitStore);
-    window.recruitStore = recruitStore;
+    window.RecruitStore = RecruitStore;
 
 });
