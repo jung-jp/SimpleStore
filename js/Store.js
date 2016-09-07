@@ -87,13 +87,12 @@ define([
             components.forEach(function(obj, idx) {
                 var Fnc = obj[Object.keys(obj).shift()];
                 if( !!Fnc['shouldUpdate'] ) {
-                     if ( Fnc['shouldUpdate']() !== true ) {
+                     if ( Fnc['shouldUpdate']() !== false ) {
                          Fnc[method]();
                      }
                 } else {
                     Fnc[method]();
                 }
-
             });
         },
 
@@ -123,6 +122,7 @@ define([
         // 모듈 추가.
         registerComponent : function(components) {
             components.forEach(function(obj, idx) {
+                obj[Object.keys(obj).shift()].store = this;
                 this.components.push(obj);
             }.bind(this));
             return this;

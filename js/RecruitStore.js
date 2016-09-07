@@ -13,15 +13,17 @@ require.config({
 
 require([
   'require', 'jquery', 'modernizr', 'DataSet', 'Store',
-  'JobCategory', 'Career', 'Preferred'
+  'JobCategory', 'Career', 'Preferred', 'Test'
 ], function (require) {
     'use strict'
-    var modernizr = require('modernizr');
-    var dataSet = require('DataSet');
-    var store = require('Store');
-    var JobCategory = require('JobCategory');
-    var Career = require('Career');
-    var Preferred = require('Preferred');
+    var modernizr = require('modernizr'),
+        dataSet = require('DataSet'),
+        store = require('Store'),
+        JobCategory = require('JobCategory'),
+        Career = require('Career'),
+        Preferred = require('Preferred'),
+        Test = require('Test')
+    ;
 
     var recruitStore = Object.assign({}, store, {
         name : 'recruitStore',
@@ -37,8 +39,9 @@ require([
     });
 
     var components = [
-        {'jobCategory'  : new JobCategory(recruitStore)},
-        ,{'career'      : new Career(recruitStore)},
+        {'test'        : Test},
+        {'jobCategory' : JobCategory},
+        {'career'      : Career},
         //,{'preferred'    : new Preferred(recruitStore)}
     ];
     recruitStore.registerComponent(components).initState();
