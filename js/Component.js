@@ -11,7 +11,7 @@ define([
          * 상태가 변경되었는지 판단하여 render를 실행할지 결정한다.
          * @return {[boolean]} [description]
          */
-        shouldUpdate() {
+        shouldUpdate : function() {
             // 객체 비교를 단순화 하기위해 immutable한 객체를 사용??.
         	return true;
         },
@@ -20,7 +20,7 @@ define([
          * 각 콤포넌트에서 화면에 출력하는 부분을 담당.
          * @return {[type]} [description]
          */
-        render() {
+        render : function() {
 
         },
 

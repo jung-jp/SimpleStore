@@ -30,17 +30,9 @@ require([
                 if(v = cached[id]) return v;
                 if(v = doc.getElementById(id)) return cached[id] = v;
             };
-        })(),
-
+        })()
     });
 
-    // var components = [
-    //     {'test'        : Test},
-    //     {'jobCategory' : JobCategory},
-    //     {'career'      : Career},
-    //     //,{'preferred'    : new Preferred(recruitStore)}
-    // ];
-    //
     var components = [
         require('Test'),
         require('JobCategory'),
@@ -48,10 +40,10 @@ require([
         require('Preferred')
     ];
 
-    var renderCondition = []
+    var renderCondition = [];
 
     recruitStore.registerComponent(components)
-                .complexRenderCondition(renderCondition)
+                //.complexRenderCondition(renderCondition)
                 .initState();
     recruitStore.setState({
         'career' : ['1','2'],

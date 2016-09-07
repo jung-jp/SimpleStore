@@ -37,6 +37,7 @@ define([
             var state = this.store.getState();
             $('#career').find(':checkbox').each(function() {
                 if ( state.career.indexOf(this.value) > -1 ) {
+                    console.log(this)
                     this.checked = true;
                 }
             });

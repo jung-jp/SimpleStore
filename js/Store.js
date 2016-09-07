@@ -9,7 +9,7 @@ define([
         state : new DataSet(),
 
         listeners : {
-            default : []
+            'default' : []
         },
 
         components : [],
@@ -114,7 +114,7 @@ define([
                    o[i] = Store[i];
                 }
             }
-            o.listeners = {default : []};
+            o.listeners = {'default':[]};
             return o;
         },
 
