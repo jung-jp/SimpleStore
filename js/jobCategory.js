@@ -2,10 +2,14 @@ define([
   'require', 'jquery',  'modernizr',  'Store', 'DataSet',
 ], function (require) {
 
-    function F(store) {
+    function Fnc(store) {
         this.name = 'jobCategory';
         this.store = store || require('Store');
+    } // end of F
 
+    Fnc.prototype.init = function () {
+        console.log('JobCategory init()');
+        var store = this.store;
         var storeGroupWrapper = $('#jobCategory'),
             autocompleteLayerEl = storeGroupWrapper.find('._autocomplete');
 
@@ -100,18 +104,13 @@ define([
             event.stopPropagation();
         });
 
-
-    } // end of F
-
-    F.prototype.init = function () {
-        console.log('JobCategory init()');
     };
 
-    F.prototype.setState = function(data) {
+    Fnc.prototype.setState = function(data) {
         this.store.setState(data, this.name);
     };
 
-    F.prototype.render = function () {
+    Fnc.prototype.render = function () {
         //console.log('JobCategory render()');
         // 이전 값을 가지고 있다가 비교해서 바뀟부분만 처리 ??
         // beforData = Object.assingn({}, data);
@@ -140,5 +139,5 @@ define([
         $('#jobCategory').find('.task_list').html(mainContent + appendHtml);
     };
 
-    return F;
+    return Fnc;
 });

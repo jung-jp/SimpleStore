@@ -12,7 +12,7 @@ define([
             default : []
         },
 
-        reducers : [],
+        components : [],
 
         // 이벤트 구독 등록
         on : function( fn, type, context ) {
@@ -28,10 +28,12 @@ define([
                 context : context || this
             });
         },
+
         // 구독 해지
         remove : function( type, fn, context ) {
             this.emitListener('unsubscribe', type, fn, context);
         },
+
         /**
          * 발행
          * type : category, publication : 파라미터.. 필요없을 듯.
@@ -71,19 +73,27 @@ define([
         },
 
         execute : function(category, method) {
-            var reducers = [];
+            var components = [];
             if( !!category ) {
-                this.reducers.forEach(function(obj, idx) {
+                this.components.forEach(function(obj, idx) {
                     if ( Object.keys(obj).shift() == category ) {
-                        return reducers.push(obj);
+                        return components.push(obj);
                     }
                 });
             } else {
-                reducers = this.reducers;
+                components = this.components;
             }
 
-            reducers.forEach(function(obj, idx) {
-                obj[Object.keys(obj).shift()][method]();
+            components.forEach(function(obj, idx) {
+                var Fnc = obj[Object.keys(obj).shift()];
+                if( !!Fnc['shouldUpdate'] ) {
+                     if ( Fnc['shouldUpdate']() !== true ) {
+                         Fnc[method]();
+                     }
+                } else {
+                    Fnc[method]();
+                }
+
             });
         },
 
@@ -110,10 +120,10 @@ define([
             return o;
         },
 
-        // 모듈(Reducer) 추가.
-        combineReducers : function(reducers) {
-            reducers.forEach(function(obj, idx) {
-                this.reducers.push(obj);
+        // 모듈 추가.
+        registerComponent : function(components) {
+            components.forEach(function(obj, idx) {
+                this.components.push(obj);
             }.bind(this));
             return this;
         }

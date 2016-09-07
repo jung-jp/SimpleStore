@@ -2,7 +2,7 @@ require.config({
     baseUrl: '/js/',
     paths: {
         'jquery': 'vendor/jquery-1.12.0.min',
-        'modernizr': 'vendor/modernizr-2.8.3.min'
+        'modernizr': 'vendor/modernizr-2.8.3.min',
     },
     shim: {
         'modernizr' : {
@@ -36,12 +36,12 @@ require([
 
     });
 
-    var reducers = [
+    var components = [
         {'jobCategory'  : new JobCategory(recruitStore)},
-        ,{'career'       : new Career(recruitStore)}
+        ,{'career'      : new Career(recruitStore)},
         //,{'preferred'    : new Preferred(recruitStore)}
     ];
-    recruitStore.combineReducers(reducers).initState();
+    recruitStore.registerComponent(components).initState();
     recruitStore.setState({
         'career' : ['1','2'],
         "jobCategory" : [

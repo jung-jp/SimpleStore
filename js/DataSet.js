@@ -20,7 +20,10 @@ define(['require'], function (require) {
             "career" : [1,3],
         };
         data && this.setData(data);
-    }
+
+        this.historySize = 10;
+        this.history = [];
+    };
 
     DataSet.prototype.setData = function (data, key) {
         if ( !!key ) {
@@ -28,6 +31,7 @@ define(['require'], function (require) {
         } else {
             this.data = data;
         }
+        this.writeHistory(Object.assign({}, this.data));
     };
 
     DataSet.prototype.getData = function (key) {
@@ -37,6 +41,12 @@ define(['require'], function (require) {
             return this.data;
         }
     };
+
+    DataSet.prototype.writeHistory = function(data) {
+        var history = this.history.slice(-(this.historySize-1));
+        history.push(data);
+        this.history = history;
+    }
 
     DataSet.prototype.stringify = function () {
         return JSON.stringify(this.data);
