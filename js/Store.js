@@ -14,6 +14,106 @@ define([
 
         components : [],
 
+        init : function(data) {
+            this.initState();
+            this.setState(data);
+            return this;
+        },
+
+        initState : function(category) {
+            this.execute(category, 'init');
+        },
+
+        render : function(category) {
+            this.execute(category, 'render');
+            this.watchComponent();
+        },
+
+        execute : function(cate, method) {
+            var comps = this.components;
+            if( !!cate ) {
+                comps = [];
+                var categorys = typeof cate == 'string' ? [cate] : cate
+                this.components.forEach(function(obj, idx) {
+                    if( categorys.indexOf(obj.name) > -1 ) {
+                        comps.push(obj);
+                    }
+                });
+            }
+
+            comps.forEach(function(obj, idx) {
+                if ( obj['shouldUpdate']() !== false ) {
+                    !!obj[method] && obj[method]();
+                }
+            });
+
+        },
+
+        setState : function(data, cate) {
+            this.state.setData(data, cate);
+            // this.emit(category, param);
+            this.render(cate);
+        },
+
+        getState : function(cate) {
+            return this.state.getData(cate);
+        },
+
+        // 모듈 추가.
+        registerComponent : function(components) {
+            components.forEach(function(obj, idx) {
+                obj.store = this;
+                this.components.push(obj);
+            }.bind(this));
+            return this;
+        },
+
+        addListener : function(listen, cate) {
+            cate = cate || 'default';
+            if ( typeof this.listeners[cate] == 'undefined' ) {
+                this.listeners[cate] = [];
+            }
+            var result = [];
+            listen.forEach(function(item) {
+                if (this.listeners[cate].indexOf(item) < 0) result.push(item);
+            }.bind(this));
+            this.listeners[cate] = result;
+        },
+
+        // :: 사용안함... 삭제 할듯~ ::
+        createStore : function(o) {
+            var i;
+            for ( i in Store ) {
+                if ( Store.hasOwnProperty(i)
+                    //&& typeof Store[i] === 'function'
+                ) {
+                   o[i] = Store[i];
+                }
+            }
+            o.listeners = {'default':[]};
+            return o;
+        },
+
+        /**
+         * 연관성 있는 컴포넌트 실행.
+         * @return {[type]} [description]
+         */
+        watchComponent : function() {
+            var listeners = Object.assign({},this.listeners);
+            var dependency = [];
+            Object.keys(listeners).forEach(function(obj, k) {
+                listeners[obj].forEach(function(item) {
+                    if( dependency.indexOf(item) < 0 ) {
+                        dependency.push(item);
+                    }
+                });
+            });
+            console.log('>>>>>>>>>>>>>>>watchComponen');
+            console.log(dependency);
+            this.execute(dependency, 'render');
+            console.log('watchComponent<<<<<<<<<<<<<<<<');
+        },
+
         // 이벤트 구독 등록 : 완전히 구현되지 않음..
         on : function( fn, type, context ) {
             type = type || 'default';
@@ -62,77 +162,6 @@ define([
                     }
                 }
             }
-        },
-
-        initState : function(category) {
-            this.execute(category, 'init');
-        },
-
-        render : function(category) {
-            this.execute(category, 'render');
-        },
-
-        execute : function(category, method) {
-            var components = [];
-            if( !!category ) {
-                this.components.forEach(function(obj, idx) {
-                    if ( obj.name == category ) {
-                        return components.push(obj);
-                    }
-                });
-            } else {
-                components = this.components;
-            }
-
-            components.forEach(function(obj, idx) {
-                if( !!obj['shouldUpdate'] ) {
-                     if ( obj['shouldUpdate']() !== false ) {
-                         !!obj[method] && obj[method]();
-                     }
-                } else {
-                    !!obj[method] && obj[method]();
-                }
-            });
-        },
-
-        setState : function(data, category) {
-            this.state.setData(data, category);
-            // this.emit(category, param);
-            this.render(category);
-        },
-
-        getState : function(category) {
-            return this.state.getData(category);
-        },
-
-        createStore : function(o) {
-            var i;
-            for ( i in Store ) {
-                if ( Store.hasOwnProperty(i)
-                    //&& typeof Store[i] === 'function'
-                ) {
-                   o[i] = Store[i];
-                }
-            }
-            o.listeners = {'default':[]};
-            return o;
-        },
-
-        // 모듈 추가.
-        registerComponent : function(components) {
-            components.forEach(function(obj, idx) {
-                obj.store = this;
-                this.components.push(obj);
-            }.bind(this));
-            return this;
-        },
-
-        /**
-         * 복잡한 조건에서 런더링을 판단하기 위한 처리..
-         * @return {[type]} [description]
-         */
-        complexRenderCondition : function() {
-            return this;
         }
     };
 

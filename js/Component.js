@@ -25,13 +25,25 @@ define([
         },
 
         /**
+         * 컴포넌트가 변경될때 연관있는 다른 컴포넌트를 정의.
+         * @return {[type]} [description]
+         */
+        watchComponent : function(args, category) {
+            category = category || this.name;
+            if( !!this.store ) {
+                this.store.addListener(args, category);
+            }
+        },
+
+        /**
          * 상태를 store에 저장
          * @param  {[type]} data [description]
          * @return {[type]}      [description]
          */
-        setState : function(data) {
+        setState : function(data, category) {
+            category = category || this.name;
             if( !!this.store ) {
-                this.store.setState(data, this.name);
+                this.store.setState(data, category);
             }
         },
 

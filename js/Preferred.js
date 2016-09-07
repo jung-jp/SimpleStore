@@ -1,18 +1,17 @@
 define([
-    'require', 'jquery',  'modernizr',  'Store'
+  'require', 'jquery', 'Component'
 ], function (require) {
 
-    function Preferred(store) {
-        this.store = store || require('Store');;
-    }
+    return require('Component').create({
 
-    Preferred.prototype.init = function () {
-        console.log('Preferred init()');
-    };
+        name : 'preferred',
 
-    Preferred.prototype.render = function () {
-        console.log('Preferred render()');
-    };
+        init : function () {
+            console.log('preferred init()');
+        },
 
-    return Preferred;
+        render : function () {
+            console.log('preferred render()');
+        }
+    });
 });

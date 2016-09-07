@@ -1,5 +1,5 @@
 define([
-  'require', 'jquery', 'Store', 'Component'
+  'require', 'jquery', 'Component'
 ], function (require) {
 
     return require('Component').create({
@@ -8,6 +8,7 @@ define([
 
         init : function () {
             console.log('Career init()');
+            this.watchComponent(['jobCategory', 'test']);
             this.registerEvent();
         },
 
@@ -20,6 +21,7 @@ define([
             // if( Object.equals(history.shift(), history.pop()) ) {
             //     return false;
             // }
+            // return this.store.state.history.length < 2;
         },
 
         registerEvent : function() {
@@ -37,7 +39,7 @@ define([
             var state = this.store.getState();
             $('#career').find(':checkbox').each(function() {
                 if ( state.career.indexOf(this.value) > -1 ) {
-                    console.log(this)
+                    //console.log(this)
                     this.checked = true;
                 }
             });

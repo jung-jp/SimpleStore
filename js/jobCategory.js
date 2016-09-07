@@ -8,6 +8,9 @@ define([
 
         init : function () {
             console.log('JobCategory init()');
+
+            this.watchComponent(['career']);
+
             var store = this.store;
             var storeGroupWrapper = $('#jobCategory'),
                 autocompleteLayerEl = storeGroupWrapper.find('._autocomplete');
@@ -106,10 +109,10 @@ define([
         },
 
         render : function () {
-            //console.log('JobCategory render()');
+            console.log('JobCategory render()');
             // 이전 값을 가지고 있다가 비교해서 바뀟부분만 처리 ??
             // beforData = Object.assingn({}, data);
-            console.log(this.store.getState());
+            // console.log(this.store.getState());
             var jobCategory = this.store.getState().jobCategory;
             var template, mainContent, appendHtml, fillContentArr=[];
             template = '' +

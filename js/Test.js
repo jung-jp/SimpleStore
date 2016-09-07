@@ -7,8 +7,7 @@ define([
 
         init : function() {
             console.log('test init>>>>>>>>>>>');
-            console.log(this);
-            console.log(this.store);
+            this.watchComponent(['jobCategory', 'major']);
             console.log('<<<<<<<<<<<test init');
         },
 
