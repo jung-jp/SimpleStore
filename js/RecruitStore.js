@@ -18,11 +18,7 @@ require([
     'use strict'
     var modernizr = require('modernizr'),
         dataSet = require('DataSet'),
-        store = require('Store'),
-        JobCategory = require('JobCategory'),
-        Career = require('Career'),
-        Preferred = require('Preferred'),
-        Test = require('Test')
+        store = require('Store')
     ;
 
     var recruitStore = Object.assign({}, store, {
@@ -38,13 +34,25 @@ require([
 
     });
 
+    // var components = [
+    //     {'test'        : Test},
+    //     {'jobCategory' : JobCategory},
+    //     {'career'      : Career},
+    //     //,{'preferred'    : new Preferred(recruitStore)}
+    // ];
+    //
     var components = [
-        {'test'        : Test},
-        {'jobCategory' : JobCategory},
-        {'career'      : Career},
-        //,{'preferred'    : new Preferred(recruitStore)}
+        require('Test'),
+        require('JobCategory'),
+        require('Career'),
+        require('Preferred')
     ];
-    recruitStore.registerComponent(components).initState();
+
+    var renderCondition = []
+
+    recruitStore.registerComponent(components)
+                .complexRenderCondition(renderCondition)
+                .initState();
     recruitStore.setState({
         'career' : ['1','2'],
         "jobCategory" : [

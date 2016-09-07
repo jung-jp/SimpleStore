@@ -14,7 +14,7 @@ define([
 
         components : [],
 
-        // 이벤트 구독 등록
+        // 이벤트 구독 등록 : 완전히 구현되지 않음..
         on : function( fn, type, context ) {
             type = type || 'default';
             fn = typeof fn === 'function' ? fn : context[fn];
@@ -29,13 +29,13 @@ define([
             });
         },
 
-        // 구독 해지
+        // 구독 해지 : 완전히 구현되지 않음..
         remove : function( type, fn, context ) {
             this.emitListener('unsubscribe', type, fn, context);
         },
 
         /**
-         * 발행
+         * 발행 : 완전히 구현되지 않음..
          * type : category, publication : 파라미터.. 필요없을 듯.
          */
         emit : function( type, param ) {
@@ -43,7 +43,7 @@ define([
         },
 
         /**
-         * 브로드 캐스팅
+         * 브로드 캐스팅 : 완전히 구현되지 않음..
          * action : 액션타입(추가?삭제), type : 카테고리,
          */
         emitListener : function(action, type, arg, context) {
@@ -76,7 +76,7 @@ define([
             var components = [];
             if( !!category ) {
                 this.components.forEach(function(obj, idx) {
-                    if ( Object.keys(obj).shift() == category ) {
+                    if ( obj.name == category ) {
                         return components.push(obj);
                     }
                 });
@@ -85,13 +85,12 @@ define([
             }
 
             components.forEach(function(obj, idx) {
-                var Fnc = obj[Object.keys(obj).shift()];
-                if( !!Fnc['shouldUpdate'] ) {
-                     if ( Fnc['shouldUpdate']() !== false ) {
-                         Fnc[method]();
+                if( !!obj['shouldUpdate'] ) {
+                     if ( obj['shouldUpdate']() !== false ) {
+                         !!obj[method] && obj[method]();
                      }
                 } else {
-                    Fnc[method]();
+                    !!obj[method] && obj[method]();
                 }
             });
         },
@@ -122,9 +121,17 @@ define([
         // 모듈 추가.
         registerComponent : function(components) {
             components.forEach(function(obj, idx) {
-                obj[Object.keys(obj).shift()].store = this;
+                obj.store = this;
                 this.components.push(obj);
             }.bind(this));
+            return this;
+        },
+
+        /**
+         * 복잡한 조건에서 런더링을 판단하기 위한 처리..
+         * @return {[type]} [description]
+         */
+        complexRenderCondition : function() {
             return this;
         }
     };

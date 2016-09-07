@@ -1,20 +1,14 @@
 define([
   'require', 'jquery', 'Store', 'Component'
 ], function (require) {
-    var component = require('Component');
+
     return require('Component').create({
-        
+
         name : 'career',
 
         init : function () {
             console.log('Career init()');
-            $('#career').on('click', 'input[type=checkbox]', function(e) {
-                var career = []
-                $(e.delegateTarget).find(':checkbox:checked').each(function() {
-                    career.push(this.value);
-                });
-                this.setState(career);
-            }.bind(this));
+            this.registerEvent();
         },
 
         shouldUpdate : function() {
@@ -28,6 +22,16 @@ define([
             // }
         },
 
+        registerEvent : function() {
+            $('#career').on('click', 'input[type=checkbox]', function(e) {
+                var career = []
+                $(e.delegateTarget).find(':checkbox:checked').each(function() {
+                    career.push(this.value);
+                });
+                this.setState(career);
+            }.bind(this));
+        },
+
         render : function () {
             console.log('career render()');
             var state = this.store.getState();
@@ -37,6 +41,6 @@ define([
                 }
             });
 
-        },
+        }
     });
 });

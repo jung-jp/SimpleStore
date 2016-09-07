@@ -6,9 +6,10 @@ define([
         name : 'test',
 
         init : function() {
-            console.log('test init');
+            console.log('test init>>>>>>>>>>>');
             console.log(this);
-            console.log(this.state);
+            console.log(this.store);
+            console.log('<<<<<<<<<<<test init');
         },
 
         shouldUpdate : function() {
@@ -22,6 +23,6 @@ define([
         },
 
     });
-    console.log(Test);
+
     return Test;
 });
