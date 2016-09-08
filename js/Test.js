@@ -7,7 +7,7 @@ define([
 
         init : function() {
             console.log('test init>>>>>>>>>>>');
-            this.watchingMe(['JobCategory', 'Major']);
+            this.watchComponent(['JobCategory', 'Major']);
             console.log('<<<<<<<<<<<test init');
         },
 

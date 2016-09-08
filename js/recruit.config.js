@@ -16,20 +16,3 @@ var require = {
         }
     }
 };
-
-// require.config({
-//     baseUrl: '/js/vendor/',
-//     paths: {
-//         'jquery': 'jquery-1.12.0.min',
-//         'modernizr': 'modernizr-2.8.3.min',
-//         'dataSet': '../DataSet'
-//     },
-//     shim: {
-//         'modernizr': {
-//             exports: 'Modernizr'
-//         },
-//         'dataSet': {
-//             exports: 'dataSet'
-//         }
-//     }
-// });

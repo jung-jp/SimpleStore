@@ -12,7 +12,6 @@ define([
          * @return {[boolean]} [description]
          */
         shouldUpdate : function() {
-            // 객체 비교를 단순화 하기위해 immutable한 객체를 사용??.
         	return true;
         },
 
@@ -28,11 +27,22 @@ define([
          * 컴포넌트가 변경될때 연관있는 다른 컴포넌트를 정의.
          * @return {[type]} [description]
          */
-        watchingMe : function(args, category) {
+        watchComponent : function(args, category) {
             category = category || this.name;
-            if( !!this.store ) {
-                this.store.addListener(args, category);
-            }
+            !!this.store && this.store.watchComponent(args, category);
+        },
+
+        addTrigger : function(key, fn, context) {
+            context = context || this;
+            !!this.store && this.store.addTrigger(key, fn, context);
+        },
+
+        removeTrigger : function(key) {
+            !!this.store && this.store.removeTrigger(key);
+        },
+
+        shoot : function(key) {
+            !!this.store && this.store.shoot(key);
         },
 
         /**
@@ -42,9 +52,7 @@ define([
          */
         setState : function(data, category) {
             category = category || this.name;
-            if( !!this.store ) {
-                this.store.setState(data, category);
-            }
+            !!this.store &&  this.store.setState(data, category);
         },
 
         /**

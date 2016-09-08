@@ -37,6 +37,7 @@ require([
       .init(require('sampleMock'));
 
     // console.log(recruitStore);
+    // global할 필요가 없을시 삭제
     window.RecruitStore = RecruitStore;
 
 });
