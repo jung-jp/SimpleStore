@@ -1,31 +1,58 @@
+/**
+ * Created by PhpStorm.
+ * User: jp
+ * Date: 2016-09-08
+ */
 function DataSet(data) {
     this.data = {
-        "jobCategory" : {//storeKey
-            "123": {//code
-                "name": "영업·고객상담",
-                "keyword": {
-                    "12" : "기업 영업",
-                    "2343" : "기술 영업 화이팅"
-                }
+        'Career': ['1', '2'],
+        'JobCategory': [
+            {
+                "keyword": '12',
+                "keywordName": '기업 영업',
+                'codeName': '영업·고객상담',
+                'code': '123'
             },
-            "456": {//code
-                "name": "SI 업체",
-                "keyword": {
-                    "654" : "FE개발자",
-                    "04563" : "풀스택노가다"
-                }
+            {
+                "keyword": '1234',
+                "keywordName": '기술 영업 화이팅',
+                'codeName': '영업·고객상담',
+                'code': '123'
+            },
+            {
+                "keyword": '654',
+                "keywordName": 'FE111',
+                'codeName': 'SI 업체',
+                'code': '456'
+            },
+            {
+                "keyword": '04563',
+                "keywordName": '풀스택노가다',
+                'codeName': '"SI 업체',
+                'code': '456'
             }
-        },
-        "career" : [1,3],
+        ],
+        'Guideline': {
+            'sex_lim': 'n',  //  mail , femail
+            'age_cd': 'n',   // n, y
+            'age_opt': {
+                'start' : [],
+                'end' : []
+            },
+            'education_cd': '',
+            'collect_cnt': '1'
+        }
     };
-    data && this.setData(data);
-
     this.historySize = 10;
     this.history = [];
-};
+    data && this.setData(data);
+}
 
 DataSet.prototype.setData = function (data, key) {
-    if ( !!key ) {
+    if (!data) {
+        return;
+    }
+    if (!!key) {
         this.data[key] = data;
     } else {
         this.data = data;
@@ -34,7 +61,7 @@ DataSet.prototype.setData = function (data, key) {
 };
 
 DataSet.prototype.getData = function (key) {
-    if ( !!key ) {
+    if (!!key) {
         return this.data[key];
     } else {
         return this.data;
@@ -46,14 +73,16 @@ DataSet.prototype.getData = function (key) {
  * @param  {[type]} data [description]
  * @return {[type]}      [description]
  */
-DataSet.prototype.writeHistory = function(data) {
-    var history = this.history.slice(-(this.historySize-1));
+DataSet.prototype.writeHistory = function (data) {
+    var history = this.history.slice(-(this.historySize - 1));
     history.push(data);
     this.history = history;
-}
+};
 
 DataSet.prototype.stringify = function () {
     return JSON.stringify(this.data);
 };
 
-!!define && define(function(){return DataSet});
+define && define(function () {
+    return DataSet;
+});

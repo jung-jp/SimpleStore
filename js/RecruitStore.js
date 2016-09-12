@@ -13,31 +13,25 @@ require.config({
 });
 
 require([
-  'require', 'jquery', 'modernizr', 'DataSet', 'Store',
-  'JobCategory', 'Career', 'Preferred', 'Test', 'sampleMock'
+    'require', 'jquery', 'Store',
+    'JobCategory', 'Career', 'Preferred', 'EventBinding'
 ], function (require) {
-    'use strict'
-    var modernizr = require('modernizr'),
-        dataSet = require('DataSet'),
-        store = require('Store'),
+    'use strict';
+    var Store = require('Store'),
         components = [
-            require('Test'),
             require('JobCategory'),
             require('Career'),
             require('Preferred')
         ];
 
-    var RecruitStore = Object.assign({}, store, {
-        name : 'RecruitStore'
+    window.RecruitStore = Object.assign({}, Store, {
+        name: 'RecruitStore'
         /**
          * 추가함수 구현
          *  ...
          */
     }).registerComponent(components)
-      .init(require('sampleMock'));
-
-    // console.log(recruitStore);
-    // global할 필요가 없을시 삭제
-    window.RecruitStore = RecruitStore;
-
+        .init()
+    //.init(data)
+    ;
 });
