@@ -1,4 +1,4 @@
-# SimpleStoreTest
+# SimpleDataStore
 
 - 리엑트를 참고해서 간단한 프레임웍 만들기.
 - require.js도 활용해 보자
