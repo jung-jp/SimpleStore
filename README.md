@@ -1,4 +1,4 @@
-# SimpleDataStore
+# dataFlux
 
 - 리엑트, 플럭를 참고해서 간단한 프레임웍 만들기.
 - requirejs도 활용해 보자
