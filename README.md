@@ -13,4 +13,5 @@
 *Component*  
 - 뷰 업데이트 및 이벤트 로직 처리
 
-![구조](./dataflow.png)
+*구조와 데이터 흐름*
+![구조와 데이터 흐름](./dataflow.png)
